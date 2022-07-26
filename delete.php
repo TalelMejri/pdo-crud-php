@@ -9,7 +9,6 @@
     $sql=$pdo->prepare("SELECT * from dsi WHERE id=?");
     $sql->execute([$_GET['id']]);
     $todo=$sql->fetch();
-
     if($todo){
         $query=$pdo->prepare('DELETE FROM dsi where id=:todoid');
         $query->execute([

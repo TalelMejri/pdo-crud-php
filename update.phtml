@@ -1,0 +1,30 @@
+
+<div class="row mt-4">
+    <div class="col">
+      <h1> Update todo <i class="bi bi-pencil-square"></i></h1> 
+    </div>
+    <div class="col">
+      <a href="index.php" class="btn btn-primary float-end"> <i class="bi bi-house"></i></a>
+    </div>
+</div>
+ <!--   <form action="</?= $_SERVER['PHP_SELF'] ."?id=".$todo['id'] ?>" method="POST">-->
+<form action="<?= $_SERVER['PHP_SELF']?>" method="POST">
+<input type="hidden" name="id" value="<?=$todo['id']?>">
+  <div class="mb-3">
+    <label for="tit" class="form-label">titel</label>
+    <input type="text" name="titel" class="form-control <?= array_key_exists('titel',$errors) ? 'is-invalid' :''?>" id="tit" aria-describedby="emailHelp" value="<?=$todo['titel']?>">
+    <small class="text-danger"><?= array_key_exists('titel',$errors) ? $errors['titel']: '' ?></small>
+  </div>
+  <div class="mb-3">
+    <label for="des" class="form-label">Description</label>
+    <input type="text" name="description" class="form-control  <?= array_key_exists('description',$errors) ? 'is-invalid' :''?>" id="des" value="<?=$todo['description'] ?>">
+    <small class="text-danger"><?= array_key_exists('description',$errors) ? $errors['description']: '' ?></small>
+  </div>
+  <div class="mb-3">
+    <label for="date" class="form-label">due date</label>
+    <input type="date" name="due_date" class="form-control   <?= array_key_exists('due_date',$errors) ? 'is-invalid' :''?>" id="date" value="<?=$todo['due_date']?>">
+    <small class="text-danger"><?= array_key_exists('due_date',$errors) ? $errors['due_date']: '' ?></small>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+  <a href="index.php" class="btn btn-secondary">cancel</a>
+</form>

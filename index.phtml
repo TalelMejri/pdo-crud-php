@@ -1,0 +1,53 @@
+
+    <h1 class="pb-4 pt-5"> <i class="bi bi-list"></i> Liste des taches</h1>
+    <?php if(array_key_exists('type',$_GET)):?>
+    <div class="alert alert-<?=$_GET['type']?>" role="alert">
+  <?=$_GET['msg']?>
+</div>
+<?php endif;?>
+    <a href="addtodo.php"><button class=" btn btn-success  float-end"> Add todo  <i class="bi bi-plus-circle"></i></button></a>
+    <table class="table">
+        <thead style="border-bottom:2px solid #000">
+            <th><i class="bi bi-calendar-check"></i></th>
+            <th>titel</th>
+            <th>operation</th>
+        </thead>
+       <?php 
+            foreach($todos as $todo):
+        ?>
+          <tr style="border-bottom:1px solid #000">
+          <td>
+            <form action="checkedtodo.php" method="get">
+              <input type="hidden" name="id" value="<?=$todo['id']?>">
+              <input onChange="this.form.submit()" type="checkbox"<?=$todo['complete'] ? 'checked':'';?>>
+          </form></td>
+            <td style="text-decoration:<?=$todo['complete']? 'line-through':''; ?>"><?= $todo['titel'] ?></td>
+            <td>
+              <a href="detail.php?id=<?=$todo['id']?>" class="btn btn-primary"><i class="bi bi-info-circle"></i></button></a> 
+              <a href="update.php?id=<?=$todo['id']?>" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+              <button class="btn btn-danger"  data-bs-toggle="modal"  data-bs-target="#deletetodo<?=$todo['id']?>"><i class="bi bi-trash3"></i></button>
+              <!-- Modal -->
+            </td>
+            <div class="modal fade" id="deletetodo<?=$todo['id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <?=$todo['titel']?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a href="delete.php?id=<?=$todo['id']?>" type="button" class="btn btn-danger">delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+          </tr>
+          <?php
+        endforeach;
+        ?> 
+    </table>
+   

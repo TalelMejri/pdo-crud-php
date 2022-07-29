@@ -4,6 +4,7 @@
         header('location:./login.php');
         exit();
      }
+
     include "connect_db.php";
     include "utilities.php";
 
@@ -30,9 +31,9 @@
         }
 
         if(empty($errors)){
-            $sql="INSERT INTO dsi (titel,description,due_date) VALUES (?,?,?)";
+            $sql="INSERT INTO dsi (titel,description,due_date,userid) VALUES (?,?,?,?)";
             $query=$pdo->prepare($sql);
-            $query->execute([$titel,$description,$due_date]);
+            $query->execute([$titel,$description,$due_date,$_SESSION['id']]);
 
             header("location:index.php?type=success&msg=Todo added succefuly");
             exit();

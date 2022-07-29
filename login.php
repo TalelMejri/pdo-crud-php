@@ -24,11 +24,10 @@
         $errors[0]="password must be at least 6 characters";
         goto show_form;
     }
-
+   if(empty($errors)){
         $query=$pdo->prepare("SELECT * FROM users where email=:email");
         $query->execute(['email'=>$email]);
         $users=$query->fetch();
-        
        if($users==false){
         $errors[0]="warning password or email";
         goto show_form;
@@ -36,10 +35,11 @@
             $_SESSION['username']=$users['username'];
             $_SESSION['email']=$users['email'];
             $_SESSION['avatar']=$users['avatar'];
-            header("location:index.php");
+            header("location:./index.php");
             exit();
          }
-}
+        }
+  }
   show_form:
   $template="login";
   $page_titel="login page";

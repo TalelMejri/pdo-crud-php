@@ -32,12 +32,11 @@
         $errors[0]="warning password or email";
         goto show_form;
         }else{
-            if(password_verify('password',$password)){
-            $_SESSION['username']=$users['username'];
-            $_SESSION['email']=$users['email'];
-            $_SESSION['avatar']=$users['avatar'];
-            header("location:./index.php");
-            exit();
+           if(password_verify($password,$users['password'])){
+             $_SESSION['username']=$users['username'];
+             $_SESSION['email']=$users['email'];
+             $_SESSION['avatar']=$users['avatar'];
+             header("location:./index.php");
             }else{
                 $errors[0]="warning password or email";
                 goto show_form;

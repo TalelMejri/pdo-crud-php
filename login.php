@@ -33,6 +33,7 @@
         goto show_form;
         }else{
            if(password_verify($password,$users['password'])){
+             $_SESSION['id']=$users['id'];
              $_SESSION['username']=$users['username'];
              $_SESSION['email']=$users['email'];
              $_SESSION['avatar']=$users['avatar'];

@@ -1,5 +1,6 @@
 <?php 
   include "connect_db.php";
+  session_start();
   $errors=[];
   if(isset($_POST['submit'])){
     extract($_POST);
@@ -23,19 +24,25 @@
         $errors[0]="password must be at least 6 characters";
         goto show_form;
     }
-    if(empty($errors)){
+
         $query=$pdo->prepare("SELECT * FROM users where email=:email");
         $query->execute(['email'=>$email]);
         $users=$query->fetch();
-        var_dump($users);
-    }else{
+        
+       if($users==false){
         $errors[0]="warning password or email";
         goto show_form;
-    }
-  }
+        }else{
+            $_SESSION['username']=$users['username'];
+            $_SESSION['email']=$users['email'];
+            $_SESSION['avatar']=$users['avatar'];
+            header("location:index.php");
+            exit();
+         }
+}
   show_form:
   $template="login";
   $page_titel="login page";
   include "./layout.phtml";
-
+  
 ?>

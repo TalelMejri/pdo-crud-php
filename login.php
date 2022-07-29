@@ -1,7 +1,7 @@
 <?php 
-
+  include "connect_db.php";
   $template="login";
-  $titel_page="login page";
+  $page_titel="login page";
   include "./layout.phtml";
 
 ?>

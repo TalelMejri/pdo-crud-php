@@ -19,10 +19,6 @@
         header("location:index.php?type=danger&msg=todo not found !");
     exit();
 }
-
-  /*$query=$pdo->prepare('DELETE FROM dsi where id=?');
-    $query->execute([$_GET['id']]);*/
-
     header("location:index.php?type=success&msg=delete todo succefuly");
     exit();
 

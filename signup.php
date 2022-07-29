@@ -31,23 +31,28 @@ $errors=[];
         $sql="SELECT * from users";
         $stm=$pdo->prepare($sql);
         $stm->execute();
-        $todo=$stm->fetchAll();
-        var_dump($todo);
-        if($todo['username']!=$username && $todo['email']!=$email){
-        $sql="INSERT INTO users VALUES (:username,:password,:email)";
+        $touve=0;
+        $todo=$stm->fetchall();
+        foreach($todo as $key=>$to){
+             if($to['username']==$username && $to['email']==$email){
+                    $trouve=1;
+             }
+        }
+        if($trouve==0){
+        $sql="INSERT INTO users (username,email,password) VALUES (:username,:email,:password)";
         $query=$pdo->prepare($sql);
         $query->execute(['username'=>$username,
-                        'password'=>password_hash($password,PASSWORD_DEFAULT),
+                         'password'=>password_hash($password,PASSWORD_DEFAULT),
                          'email'=>$email
                         ]);
+                        header('location:./login.php');
                     }else{
                         $errors[0]="déja existe";
                          goto show_form;
                     }
-    }
-    header('location:./login.php');
-  }
 
+}
+  }
 show_form:
  $template="signup";
  $page_titel="sign up";

@@ -1,4 +1,11 @@
 <?php 
+
+    session_start();
+    if(!isset($_SESSION['username'])){
+        header('location:./login.php');
+        exit();
+    }
+    
     if(!(array_key_exists('id',$_GET) or array_key_exists('id',$_POST)) and !(ctype_digit($_GET['id']) or ctype_digit($_POST['id']))){
         header("location:index.php");
         exit();

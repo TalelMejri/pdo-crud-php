@@ -4,23 +4,23 @@
   if(isset($_POST['submit'])){
     extract($_POST);
     if(empty($email) && empty($password)){
-        $errors['0']="all field is empty";
+        $errors[0]="all field is empty";
         goto show_form;
     }
     if(empty($email)){
-        $errors['email']="filed email is empty";
+        $errors[0]="filed email is empty";
         goto show_form;
     }
     if(empty($password)){
-        $errors['password']="filed password is empty";
+        $errors[0]="filed password is empty";
         goto show_form;
     }
     if(filter_var($email,FILTER_VALIDATE_EMAIL)==false){
-        $errors['email']="invalid email";
+        $errors[0]="invalid email";
         goto show_form;
     }
     if(strlen($password)<6){
-        $errors['password']="password must be at least 6 characters";
+        $errors[0]="password must be at least 6 characters";
         goto show_form;
     }
     if(empty($errors)){
@@ -28,6 +28,9 @@
         $query->execute(['email'=>$email]);
         $users=$query->fetch();
         var_dump($users);
+    }else{
+        $errors[0]="warning password or email";
+        goto show_form;
     }
   }
   show_form:

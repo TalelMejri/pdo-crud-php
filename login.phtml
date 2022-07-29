@@ -11,12 +11,10 @@
     <div class="form-floating">
       <input type="text" name="email"  class="form-control mb-3"  id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
-      <small class="text-danger"><?= array_key_exists('email',$errors) ? $errors['email'] :'' ?></small>
     </div>
     <div class="form-floating">
       <input type="password" name="password" class="form-control mb-3" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
-      <small class="text-danger"><?= array_key_exists('password',$errors) ? $errors['password'] :'' ?></small>
     </div>
     <button style="margin-left:240px;padding:10px 25px;" class="btn btn-outline-primary " name="submit" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted text-center">&copy;lbezz 2022-2023</p>

@@ -1,17 +1,16 @@
-<main class="form-signin w-100 m-auto">
-  <form>
-    <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+  
+  <div class="contianer d-flex justify-content-center m-4">
+  <form class="shadow rounded m-4 p-4 w-50" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+    <h1 class=" mb-4 fw-normal text-center"> Sign in</h1>
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" name="email" class="form-control mb-3" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" name="password" class="form-control mb-3" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy;lbezz 2022-2023</p>
+    <button style="margin-left:240px;padding:10px 25px;" class="btn btn-outline-primary " name="submit" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted text-center">&copy;lbezz 2022-2023</p>
   </form>
-</main>
+  </div>

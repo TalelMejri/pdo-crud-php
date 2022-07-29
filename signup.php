@@ -28,12 +28,22 @@ $errors=[];
         goto show_form;
     }
     if(empty($errors)){
+        $sql="SELECT * from users";
+        $stm=$pdo->prepare($sql);
+        $stm->execute();
+        $todo=$stm->fetchAll();
+        var_dump($todo);
+        if($todo['username']!=$username && $todo['email']!=$email){
         $sql="INSERT INTO users VALUES (:username,:password,:email)";
         $query=$pdo->prepare($sql);
         $query->execute(['username'=>$username,
                         'password'=>password_hash($password,PASSWORD_DEFAULT),
                          'email'=>$email
                         ]);
+                    }else{
+                        $errors[0]="déja existe";
+                         goto show_form;
+                    }
     }
     header('location:./login.php');
   }

@@ -4,7 +4,7 @@
   if(isset($_POST['submit'])){
     extract($_POST);
     if(empty($email) && empty($password)){
-        $errors[0]="all field is empty";
+        $errors['0']="all field is empty";
         goto show_form;
     }
     if(empty($email)){

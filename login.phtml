@@ -2,10 +2,14 @@
   <div class="contianer d-flex justify-content-center m-4">
 
   <form class="shadow rounded m-4 p-4 w-50" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
-    
+  <?php if(!empty($errors)): ?>
+  <div class="alert alert-danger" role="alert">
+       <?= $errors[0] ;?>
+    </div>
+<?php endif;?>
   <h1 class=" mb-4 fw-normal text-center"> Sign in</h1>
     <div class="form-floating">
-      <input type="email" name="email"  class="form-control mb-3"  id="floatingInput" placeholder="name@example.com">
+      <input type="text" name="email"  class="form-control mb-3"  id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
       <small class="text-danger"><?= array_key_exists('email',$errors) ? $errors['email'] :'' ?></small>
     </div>

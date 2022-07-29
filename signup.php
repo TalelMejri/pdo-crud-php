@@ -14,6 +14,7 @@ $errors=[];
         $errors[0]="email incorect";
         goto show_form;
     }
+    
     if(strlen($password)<6){
         $errors[0]="password must be at least 3 characters";
         goto show_form;

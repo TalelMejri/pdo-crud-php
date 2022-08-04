@@ -34,7 +34,6 @@
             $sql="INSERT INTO dsi (titel,description,due_date,userid) VALUES (?,?,?,?)";
             $query=$pdo->prepare($sql);
             $query->execute([$titel,$description,$due_date,$_SESSION['id']]);
-
             header("location:index.php?type=success&msg=Todo added succefuly");
             exit();
         }

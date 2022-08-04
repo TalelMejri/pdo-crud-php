@@ -5,7 +5,6 @@
     } 
 
     include "connect_db.php";
-    // recuperation de todo
     $sql=$pdo->prepare("SELECT * from dsi WHERE id=?");
     $sql->execute([$_GET['id']]);
     $todo=$sql->fetch();

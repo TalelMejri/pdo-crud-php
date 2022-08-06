@@ -24,7 +24,7 @@
 
         /**
          * get todo with id
-         * 
+         * @param int $id
          * return array $todo[]
          */
         public function get($id):array
@@ -36,10 +36,22 @@
             return $query->fetch();
         }
 
+        /***
+         * create new todo
+         * @param string $titel,$decription
+         * @param date $due_date
+         * 
+         * return last id created
+         */
         public function create($titel,$description,$due_date){
          $sql="INSERT INTO dsi (titel,description,due_date,userid) VALUES (?,?,?,?)";
          $this->pdo->launch_query($sql,[$titel,$description,$due_date,1]);
          return $this->pdo->lastInsertId();
+        }
+
+        public function delete($id):void{
+            $sql="Delete from dsi where id=:id";
+            $this->pdo->launch_query($sql,['id'=>$id]);
         }
 
      }

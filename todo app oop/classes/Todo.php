@@ -10,8 +10,11 @@
         public function __construct(){
             $this->pdo = new DataBase();
         }
-
-        public function getAll(){
+/**
+ * get all toto
+ * retrun array $todos[]
+ */
+        public function getAll():array{
             $sql="SELECT * from dsi order by complete,due_date";
           /*  $query=$this->pdo->prepare($sql);
             $query->execute();*/
@@ -19,7 +22,13 @@
             return $query->fetchAll();
         }
 
-        public function get($id){
+        /**
+         * get todo with id
+         * 
+         * return array $todo[]
+         */
+        public function get($id):array
+        {
             $sql='SELECT * FROM dsi where id=:id';
            /* $query=$this->pdo->prepare($sql);
             $query->execute(['id'=>$id]);*/

@@ -22,6 +22,12 @@
         }
       }
 
+      public function launch_query(string $sql,array $param = []){
+        $stmt=parent::prepare($sql);
+        $stmt->execute($param);
+        return $stmt;
+      }
+
      }
 
 

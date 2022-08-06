@@ -1,0 +1,25 @@
+
+  <div class="row ms-5 mt-5">
+    <div class="col">
+        <h3>details de <?= $todo['titel']; ?></h3>
+    </div>
+    <div class="col">
+        <a href="./index.php" class="btn btn-primary"><i class="bi bi-house"></i></a>
+    </div>
+  </div>
+<div class="card mt-2" style="width:50rem;">
+    <div class="card-body">
+    <h5 class="card-title">
+        <p><strong>Titre</strong></p>
+        <p class="card-text"><?= $todo['titel'];?></p>
+    </h5>
+    <h6 class="card-titel mb-2  pt-1">description</h6>
+    <p class="card-text"><?= $todo['description'];?></p>
+    <h5 class="card-title">
+        <p><strong>status :</strong><?=$todo['complete']?'complete':'incomplete' ?></p>
+    </h5>
+    <h5 class="card-title">
+        <p><strong>Date :</strong><?=$todo['due_date'] ?></p>
+    </h5>
+  </div>
+</div>

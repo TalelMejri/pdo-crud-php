@@ -36,6 +36,12 @@
             return $query->fetch();
         }
 
+        public function create($titel,$description,$due_date){
+         $sql="INSERT INTO dsi (titel,description,due_date,userid) VALUES (?,?,?,?)";
+         $this->pdo->launch_query($sql,[$titel,$description,$due_date,1]);
+         return $this->pdo->lastInsertId();
+        }
+
      }
 
 

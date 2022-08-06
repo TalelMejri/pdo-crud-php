@@ -43,15 +43,31 @@
          * 
          * return last id created
          */
-        public function create($titel,$description,$due_date){
+        public function create($titel,$description,$due_date)
+        {
          $sql="INSERT INTO dsi (titel,description,due_date,userid) VALUES (?,?,?,?)";
          $this->pdo->launch_query($sql,[$titel,$description,$due_date,1]);
          return $this->pdo->lastInsertId();
         }
-
-        public function delete($id):void{
+/**
+ * delete todo
+ * @param int $id
+ */
+        public function delete($id):void
+        {
             $sql="Delete from dsi where id=:id";
             $this->pdo->launch_query($sql,['id'=>$id]);
+        }
+
+/**
+ * 
+ * check todo with id
+ * @param int $id
+ */
+        public function check($id):void
+        {
+            $sql='UPDATE dsi SET complete=:com where id=:idtodo';
+            $this->pdo->launch_query($sql,['com'=>$todo['complete'],'idtodo'=>$id]);
         }
 
      }

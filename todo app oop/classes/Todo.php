@@ -38,8 +38,9 @@
 
         /***
          * create new todo
-         * @param string $titel,$decription
-         * @param date $due_date
+         * @param string $titel
+         * @param String $description
+         * @param Date $due_date
          * 
          * return last id created
          */

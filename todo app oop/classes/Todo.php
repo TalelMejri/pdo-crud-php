@@ -71,6 +71,24 @@
             $this->pdo->launch_query($sql,['com'=>$todo['complete'],'idtodo'=>$id]);
         }
 
+        /**
+         * @param string titel
+         * @param string description
+         * @param string due_date
+         */
+
+
+        public function update_todo(String $titel,String $description,String $due_date){
+            $query="UPDATE dsi SET titel=:titel,description=:description,due_date=:due_date WHERE id=:todoid";
+            $this->pdo->launch_query($query,[
+                'titel'=>$titel,
+                'description'=>$description,
+                'due_date'=>$due_date,
+               // 'todoid'=>$id]
+                 'todoid'=>array_key_exists('id',$_GET)?$_GET['id']:$_POST['id']]
+            );
+        }
+
      }
 
 

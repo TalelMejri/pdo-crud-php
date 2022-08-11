@@ -1,8 +1,9 @@
 <?php 
 
     include './classes/todo.php';
-    $todo=new todo();
-    $todo->check($_GET['id']);
+    $todo=new Todo();
+    $res=$todo->get($_GET['id']);
+    $todo->check($_GET['id'],!$res['complete']);
     header("location:index.php");
     exit();
 

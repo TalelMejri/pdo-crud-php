@@ -65,10 +65,10 @@
  * check todo with id
  * @param int $id
  */
-        public function check($id):void
+        public function check(int $id,int $opposer_complete):void
         {
             $sql='UPDATE dsi SET complete=:com where id=:idtodo';
-            $this->pdo->launch_query($sql,['com'=>$todo['complete'],'idtodo'=>$id]);
+            $this->pdo->launch_query($sql,['com'=>$opposer_complete,'idtodo'=>$id]);
         }
 
         /**

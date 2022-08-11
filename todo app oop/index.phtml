@@ -12,6 +12,9 @@
             <th>titel</th>
             <th>operation</th>
         </thead>
+        <?php if(empty($todos)):?>
+          <td class="text-center"> no todo</td>
+        <?php else: ?>
        <?php 
             foreach($todos as $todo):
         ?>
@@ -49,4 +52,5 @@
         endforeach;
         ?> 
     </table>
+    <?php  endif ;?>
    

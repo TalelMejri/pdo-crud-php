@@ -1,5 +1,4 @@
 <?php 
-
     session_start();
     if(!isset($_SESSION['username'])){
         header('location:./login.php');
@@ -38,9 +37,7 @@
              exit();
          }
   }
-
     $todo=$todo->get(array_key_exists('id',$_GET)?$_GET['id']:$_POST['id']);
-
     if(!$todo){
         header("location:index.php");
         exit;

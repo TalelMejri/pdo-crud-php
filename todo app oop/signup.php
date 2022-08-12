@@ -48,6 +48,7 @@ $errors=[];
          $errors[0]="please upload an image";
         goto show_form;
     }
+    
     $avatar='./storage/avatars/'.$file->getfilename();
     if(empty($errors)){
             $todo=new user();

@@ -1,12 +1,16 @@
 <?php 
  
  include "./classes/user.php";
+ include "./classes/File.php";
 
 $errors=[];
   if (isset($_POST['signup'])){
      include "utilities.php";
      extract($_POST);
-
+     echo '<pre>';
+     print_r($_FILES);
+     echo '</pre>';
+    exit ;
     if(strlen($username)<3){
         $errors[0]="username must be at least 3 characters";
         goto show_form;

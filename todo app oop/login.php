@@ -47,10 +47,9 @@
          }*/
          $user=new user();
          $verifier=$user->login($email,$password);
-         if($verifier==true){
+         if($verifier==false){
                $errors[0]="warning password or email";
                 goto show_form;
-          
          }else{
              header("location:index.php");
             exit;

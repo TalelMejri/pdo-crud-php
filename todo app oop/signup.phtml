@@ -1,6 +1,6 @@
   
   <div class="contianer d-flex justify-content-center m-4">
-  <form class="shadow rounded m-4 p-4 w-50" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+  <form class="shadow rounded m-4 p-4 w-50" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
   <?php if(!empty($errors)): ?>
   <div class="alert alert-danger" role="alert">
        <?= $errors[0] ;?>
@@ -22,6 +22,10 @@
     <div class="form-floating">
       <input type="password" name="confirm" class="form-control mb-3" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Confirme Password</label>
+    </div>
+    <div class="form-floating">
+      <input type="file" name="avatar" class="form-control mb-3" id="floatingPassword" placeholder="file">
+      <label for="floatingPassword">Avatar</label>
     </div>
     <button style="margin-left:240px;padding:10px 25px;" class="btn btn-outline-primary " name="signup" type="submit">Sign in</button>
      <p class="text-center mt-2">I have an aucount <a class="text-decoration-none " href="login.php">Log in  Here </a></p>

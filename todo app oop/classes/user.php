@@ -22,7 +22,7 @@
         if($user==false){
             return false;
         }else{
-            if(password_verify($password,$user['password'])){
+           /* if(password_verify($password,$user['password'])){
                 $_SESSION['iduser']=$user['iduser'];
                 $_SESSION['username']=$user['username'];
                 $_SESSION['email']=$user['email'];
@@ -31,7 +31,13 @@
                 return true;
             }else{
                 return false;
-            }
+            }*/
+              $_SESSION['iduser']=$user['iduser'];
+                $_SESSION['username']=$user['username'];
+                $_SESSION['email']=$user['email'];
+                $_SESSION['$password']=$user['password'];
+                $_SESSION['avatar']=$user['avatar'];
+            return true;
         }
 
     }

@@ -6,5 +6,4 @@
     $template='details';
     $page_titel='detail';
     include './layout.phtml';
-
 ?>

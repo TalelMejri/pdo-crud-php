@@ -17,9 +17,16 @@
             $this->filetmpname=$info_file['tmp_name'];
         }
 
-        public function uploadfile(){
-            $this->filename = md5(rand()). ' . ' .$this->fileExtension ; 
-            if(!move_uploaded_file())
+        public function uploadfile():bool{
+            $this->filename = md5(rand()). ' . ' .$this->fileExtention ; 
+            if(!move_uploaded_file($this->filetmpname,$this->storagedirectory.$this->filename)){
+                    return false;
+            }
+            return true;
+        }
+
+        public function getfilename():String{
+            return $this->filename;
         }
 
 

@@ -44,10 +44,10 @@
          * 
          * return last id created
          */
-        public function create($titel,$description,$due_date)
+        public function create($titel,$description,$due_date,$id)
         {
          $sql="INSERT INTO dsi (titel,description,due_date,userid) VALUES (?,?,?,?)";
-         $this->pdo->launch_query($sql,[$titel,$description,$due_date,1]);
+         $this->pdo->launch_query($sql,[$titel,$description,$due_date,$id]);
          return $this->pdo->lastInsertId();
         }
 /**

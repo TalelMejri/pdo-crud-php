@@ -1,5 +1,5 @@
 <?php 
-     session_start();
+    session_start();
     if(!isset($_SESSION['username'])){
         header('location:./login.php');
         exit();
@@ -29,12 +29,9 @@
         }
 
         if(empty($errors)){
-          /*  $sql="INSERT INTO dsi (titel,description,due_date,userid) VALUES (?,?,?,?)";
-            $query=$pdo->prepare($sql);
-            $query->execute([$titel,$description,$due_date,$_SESSION['id']]);*/
             include './classes/todo.php';
             $todo=new todo();
-            $todos=$todo->create($titel,$description,$due_date);
+            $todos=$todo->create($titel,$description,$due_date,$_SESSION['id']);
             header("location:index.php?type=success&msg=Todo added succefuly");
             // astuce /// 
             //header("location:detail.php?id=".$todos);

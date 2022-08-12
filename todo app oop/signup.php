@@ -7,12 +7,12 @@ $errors=[];
   if (isset($_POST['signup'])){
      include "utilities.php";
      extract($_POST);
-     echo '<pre>';
+     /*echo '<pre>';
      print_r($_FILES);
      echo '</pre>';
-    exit ;
-    
-    $file = new File('./storage/avatars/',$_FILES['avatars']);
+    exit ;*/
+
+    $file = new File('./storage/avatars/',$_FILES['avatar']);
 
     if(strlen($username)<3){
         $errors[0]="username must be at least 3 characters";
@@ -35,30 +35,22 @@ $errors=[];
         $errors[0]="confirm password must be password";
         goto show_form;
     }
+    $upload=$file->uploadfile();
+    if(!$upload){
+        $errors[0]="file upload failed";
+        goto show_form;
+    }
+
+    $avatar='./storage/avatars/'.$file->getfilename();
     if(empty($errors)){
-       /* $sql="SELECT * from users";
-        $query=new todo();
-        $stmt=$query->launchquery($sql);
-        $touve=0;
-        $todo=$stm->fetchall();
-        foreach($todo as $key=>$to){
-             if($to['username']==$username && $to['email']==$email){
-                    $trouve=1;
-             }
-        }*/
-     //   if($trouve==0){
             $todo=new user();
-            $id=$todo->signup($username,$email,$password);
+            $id=$todo->signup($username,$email,$password,$avatar);
         if(is_int($id)){
             header('location:./login.php');
             exit;
         }else{
             $errors[0]=$id;
         }
-                //    }else{
-                   /*     $errors[0]="déja existe";
-                        goto show_form;
-                    }*/
 }
   }
 show_form:

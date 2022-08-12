@@ -32,12 +32,12 @@
             }else{
                 return false;
             }*/
-              $_SESSION['iduser']=$user['iduser'];
+                $_SESSION['iduser']=$user['iduser'];
                 $_SESSION['username']=$user['username'];
                 $_SESSION['email']=$user['email'];
                 $_SESSION['$password']=$user['password'];
                 $_SESSION['avatar']=$user['avatar'];
-            return true;
+                return true;
         }
 
     }
@@ -51,12 +51,13 @@
      * return integer
      */
 
-    public function signup(String $username,String $email,String $password):int{
-        $sql="INSERT INTO users (username,email,password) VALUES (:username,:email,:password)";
+    public function signup(String $username,String $email,String $password,String $avatar):int{
+        $sql="INSERT INTO users (username,email,password,avatar) VALUES (:username,:email,:password,:avatar)";
         $this->pdo->launch_query($sql,[
          'username'=>$username,
          'email'=>$email,
-         'password'=>password_hash($password,PASSWORD_DEFAULT)]);
+         'password'=>password_hash($password,PASSWORD_DEFAULT),
+         'avatar'=>$avatar]);
          return $this->pdo->lastInsertId();
     }
 

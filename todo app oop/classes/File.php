@@ -3,13 +3,23 @@
     require_once 'database.php';
 
     class file{
-        private $pdo;
+        private $filename;
+        private $storagedirectory;
+        private $fileExtention;
+        private $filesize;
+        private $filetmpname;
 
-        public function __construct(){
-            $this->pdo=new DataBase();
+        public function __construct(String $storagepath,array $info_file){
+            $this->filename=$info_file['name'];
+            $this->storagedirectory=$storagepath;
+            $this->fileExtention=pathinfo($this->filename,PATHINFO_EXTENSION);
+            $this->filesize=$info_file['size'];
+            $this->filetmpname=$info_file['tmp_name'];
         }
 
         
+
+
     }
 
 

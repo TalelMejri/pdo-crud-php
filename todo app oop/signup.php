@@ -11,6 +11,9 @@ $errors=[];
      print_r($_FILES);
      echo '</pre>';
     exit ;
+    
+    $file = new File('./storage/avatars/',$_FILES['avatars']);
+
     if(strlen($username)<3){
         $errors[0]="username must be at least 3 characters";
         goto show_form;

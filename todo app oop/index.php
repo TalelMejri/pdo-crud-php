@@ -1,4 +1,5 @@
 <?php 
+     session_start();
      include './classes/Todo.php';
      $todo= new todo();
      $todos=$todo->getAll();

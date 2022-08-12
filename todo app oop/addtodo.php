@@ -31,7 +31,7 @@
         if(empty($errors)){
             include './classes/todo.php';
             $todo=new todo();
-            $todos=$todo->create($titel,$description,$due_date,$_SESSION['id']);
+            $todos=$todo->create($titel,$description,$due_date,$_SESSION['iduser']);
             header("location:index.php?type=success&msg=Todo added succefuly");
             // astuce /// 
             //header("location:detail.php?id=".$todos);

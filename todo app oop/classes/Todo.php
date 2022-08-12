@@ -15,10 +15,10 @@
  * retrun array $todos[]
  */
         public function getAll():array{
-            $sql="SELECT * from dsi order by complete,due_date";
+            $sql="SELECT * from dsi where id=:userid order by complete,due_date";
           /*  $query=$this->pdo->prepare($sql);
             $query->execute();*/
-            $query=$this->pdo->launch_query($sql);
+            $query=$this->pdo->launch_query($sql,['userid'=>$_SESSION['iduser']]);
             return $query->fetchAll();
         }
 

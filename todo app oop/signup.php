@@ -40,6 +40,14 @@ $errors=[];
         $errors[0]="file upload failed";
         goto show_form;
     }
+    if($file->sizefile()==false){
+        $errors[0]="please upload an image smaller than 1MB";
+        goto show_form;
+    }
+    if($file->isImage()==false){
+         $errors[0]="please upload an image";
+        goto show_form;
+    }
 
     $avatar='./storage/avatars/'.$file->getfilename();
     if(empty($errors)){

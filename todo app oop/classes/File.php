@@ -29,6 +29,21 @@
             return $this->filename;
         }
 
+        public function isImage():bool{
+            $alloewedextension=["jpg","jpeg","png","gif"];
+            if(!in_array($this->fileExtention,$alloewedextension)){
+                return false;
+            }
+            return true;
+        } 
+
+
+        public function sizefile():bool{
+            if($this->filesize>3000000){
+                return false;
+            }
+            return true;
+        }
 
     }
 

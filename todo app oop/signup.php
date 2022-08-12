@@ -11,7 +11,6 @@ $errors=[];
      print_r($_FILES);
      echo '</pre>';
     exit ;*/
-
     $file = new File('./storage/avatars/',$_FILES['avatar']);
 
     if(strlen($username)<3){
@@ -48,7 +47,7 @@ $errors=[];
          $errors[0]="please upload an image";
         goto show_form;
     }
-    
+
     $avatar='./storage/avatars/'.$file->getfilename();
     if(empty($errors)){
             $todo=new user();

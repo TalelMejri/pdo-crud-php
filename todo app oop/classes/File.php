@@ -17,7 +17,10 @@
             $this->filetmpname=$info_file['tmp_name'];
         }
 
-        
+        public function uploadfile(){
+            $this->filename = md5(rand()). ' . ' .$this->fileExtension ; 
+            if(!move_uploaded_file())
+        }
 
 
     }

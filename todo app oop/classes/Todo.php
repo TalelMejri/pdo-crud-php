@@ -2,7 +2,6 @@
  <?php
 
      include_once 'database.php';
-
      class todo
       {
         private $pdo;
@@ -21,7 +20,6 @@
             $query=$this->pdo->launch_query($sql,['userid'=>$_SESSION['iduser']]);
             return $query->fetchAll();
         }
-
         /**
          * get todo with id
          * @param int $id
@@ -59,7 +57,6 @@
             $sql="Delete from dsi where id=:id";
             $this->pdo->launch_query($sql,['id'=>$id]);
         }
-
 /**
  * 
  * check todo with id

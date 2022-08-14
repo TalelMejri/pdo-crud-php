@@ -27,7 +27,7 @@
         goto show_form;
     }
    if(empty($errors)){
-        /*$query=$pdo->prepare("SELECT * FROM users where email=:email");
+        $query=$pdo->prepare("SELECT * FROM users where email=:email");
         $query->execute(['email'=>$email]);
         $users=$query->fetch();
        if($users==false){
@@ -44,7 +44,7 @@
                 $errors[0]="warning password or email";
                 goto show_form;
             }
-         }*/
+         }
          $user=new user();
          $verifier=$user->login($email,$password);
          if($verifier==false){
